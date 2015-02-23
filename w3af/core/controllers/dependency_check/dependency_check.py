@@ -28,14 +28,9 @@ try:
     import pip
     # We do this in order to check for really old versions of pip
     pip.get_installed_distributions()
-except ImportError:
-    print('We recommend you install pip before continuing.')
+except (ImportError, AttributeError):
+    print('We detected that either there is no pip or old version of pip is installed.')
     print('http://www.pip-installer.org/en/latest/installing.html')
-    HAS_PIP = False
-except AttributeError:
-    print('A very old version of pip was detected. We recommend a pip update'
-          ' before continuing:')
-    print('    sudo pip install --upgrade pip')
     HAS_PIP = False
 else:
     HAS_PIP = True
